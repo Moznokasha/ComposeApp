@@ -14,7 +14,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.*
@@ -33,6 +38,8 @@ import androidx.compose.ui.unit.sp
 import com.example.composeapp.ui.theme.ComposeAppTheme
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.focus.focusModifier
 
 
 class MainActivity : ComponentActivity() {
@@ -46,98 +53,132 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+//                    LazyColumn {
+//                        items(dummyData()){(title, description) ->
+//                            MyItem(title = title, description = description)
+//                            HorizontalDivider()
+//                        }
+//                    }
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Column (
-        modifier = Modifier.fillMaxSize()
-            .padding(top = 50.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    )
-    {
-//        Text(
-//
-//            text = "Hello $name!",
-//            modifier = modifier.padding(top = 50.dp, start = 20.dp)
-//        )
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(4.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Image(
-                painter = painterResource( R.drawable.part1),
-                contentDescription = null,
-                modifier = Modifier.weight(1f)
-                    .padding(4.dp)
-
-            )
-            Image(
-                painter = painterResource(R.drawable.part2),
-                contentDescription = null,
-                modifier = Modifier.weight(1f)
-                    .padding(4.dp)
-
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = "Details",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 24.sp
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = {  }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "back")
+                    }
+                }
             )
         }
-
-        Image(
-            painter = painterResource(R.drawable.part3),
-            contentDescription = null,
-            modifier = Modifier.fillMaxWidth()
-                .padding(4.dp)
-
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth()
-                .padding(4.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Text(
-                text = "My name is: Mozn ",
-                fontSize = 24.sp
-            )
-
-            Text(
-                text = "My age is : 19",
-                fontSize = 24.sp
-            )
-
-        }
-
-        val uriHandler = LocalUriHandler.current
-        val url = "https://www.linkedin.com/in/mozn-okasha-7b312b2b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-        Text(
-            text = url,
+    ) { innerPadding ->
+        Column(
             modifier = Modifier
-                .clickable{uriHandler.openUri(url)}
-                .padding(4.dp),
-            style = TextStyle(
-                color = Color(0xFF1E88E5),
-                textDecoration = TextDecoration.Underline
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(Color(0xFFE0E0E0)),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(R.drawable.google),
+                contentDescription = null,
+                modifier = Modifier.size(150.dp)
             )
-        )
+            Text(
+                text = "Language",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp
+            )
+            Row( modifier = Modifier
+                .padding(30.dp)
+                .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Text(
+                        text = "1525",
+                        fontSize = 15.sp,
+                        modifier = Modifier
+                            .padding(end = 5.dp)
+                    )
+                    Image(
+                        painter = painterResource(R.drawable.star),
+                        contentDescription = null
+                    )
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "Python",
+                        modifier = Modifier.padding(end = 5.dp))
+                    Image(painter = painterResource(R.drawable.blue),
+                        contentDescription = null)
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = "347",
+                        fontSize = 15.sp,
+                        modifier = Modifier.padding(end = 5.dp))
+                    Image(painter = painterResource(R.drawable.fork),
+                        contentDescription = null)
+                }
+
+            }
+            Text(text = "Shared repository for open-sourced projects from the Google AI Language team. ",
+                modifier = Modifier.padding(30.dp),
+                fontSize = 20.sp)
+            Spacer(modifier = Modifier.height(300.dp))
+
+            Button(
+                onClick = {},
+                shape = RoundedCornerShape(5.dp),
+                modifier = Modifier.fillMaxWidth(0.7f),
 
 
+            ) {
+                Text(text = "Show Issues",
+                    fontSize = 25.sp)
+            }
+        }
     }
-
 }
 
 
 //fun circularButtonModifier(color: Color) = Modifier
 //    .background(color, shape = CircleShape)
 //    .padding(8.dp)
+
+//@Composable
+//fun MyItem(title: String, description: String){
+//    Text(text = title, modifier = Modifier.padding(bottom = 8.dp))
+//    Text(text = description )
+//
+//}
+//
+//private fun dummyData() = listOf(
+//    "repo 1" to "description 1",
+//    "repo 2" to "description 2",
+//    "repo 3" to "description 3",
+//    "repo 4" to "description 4",
+//    "repo 5" to "description 5",
+//    "repo 6" to "description 6"
+//)
 
 
 
