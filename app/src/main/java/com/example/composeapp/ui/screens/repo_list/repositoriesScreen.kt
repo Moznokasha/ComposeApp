@@ -1,41 +1,35 @@
-package com.example.composeapp.screens.repositories
+package com.example.composeapp.ui.screens.repo_list
 
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_7
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.composeapp.screens.repositories.reposData.getRepos
+import com.example.composeapp.R
+import com.example.composeapp.ui.common_components.MyAppBar
+import com.example.composeapp.ui.screens.repo_list.components.RepoItems
+import com.example.composeapp.ui.screens.repo_list.repositories.reposData.getRepos
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReposScreen(){
+fun ReposScreen(onBack: () -> Unit = {}){
     val repositories = getRepos()
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    Text(
-                        text = "GitHub Repositories",
-                        fontSize = 24.sp,
-                        style = MaterialTheme.typography.titleLarge
-                    )
-                }
+            MyAppBar(
+                title = R.string.github_repositories,
+                showBackButton = true,
+                onBackButtonClicked = onBack
             )
         }
     ) { innerPadding ->
@@ -43,11 +37,12 @@ fun ReposScreen(){
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .background(Color(0xFFE0E0E0))
+                .background(MaterialTheme.colorScheme.background)
         ){
-            items(repositories){repo->ReposItems(
-                repos = repo
-            )
+            items(repositories){repoUiModelItem->
+                RepoItems(
+                    repoUiModel = repoUiModelItem
+                )
 
             }
         }

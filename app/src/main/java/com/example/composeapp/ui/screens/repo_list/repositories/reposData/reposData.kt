@@ -1,10 +1,12 @@
-package com.example.composeapp.screens.repositories.reposData
+package com.example.composeapp.ui.screens.repo_list.repositories.reposData
 
 import com.example.composeapp.R
+import com.example.composeapp.ui.screens.repo_list.model.RepoUiModel
 
-fun getRepos(): List <Repos>{
+fun getRepos(): List <RepoUiModel>{
    return listOf(
-       Repos(
+       RepoUiModel(
+           id = 1,
            title = "Less.J",
            owner = "Less",
            description = "Less. The dynamic stylesheet language.",
@@ -12,28 +14,32 @@ fun getRepos(): List <Repos>{
            icon = R.drawable.less
 
        ),
-       Repos(
+       RepoUiModel(
+           id = 2,
            title = "rust",
            owner = "rust-lang",
            description = "Empowering everyone to build reliable and efficient software.",
            stars = "87181",
            icon = R.drawable.rust
 
-       ), Repos(
+       ), RepoUiModel(
+           id = 3,
            title = "ruby",
            owner = "ruby",
            description = "The ruby programming language.",
            stars = "20981",
            icon = R.drawable.ruby
 
-       ), Repos(
+       ), RepoUiModel(
+           id = 4,
            title = "julia",
            owner = "juliaLang",
            description = "The julia programming language.",
            stars = "43541",
            icon = R.drawable.julia
 
-       ), Repos(
+       ), RepoUiModel(
+           id = 5,
            title = "language",
            owner = "tolmasky",
            description = "A fast PEG parser written in JavaScript with first class errors.",
@@ -41,7 +47,8 @@ fun getRepos(): List <Repos>{
            icon = R.drawable.ic_launcher_foreground
 
        ),
-       Repos(
+       RepoUiModel(
+           id = 6,
            title = "Kotlin",
            owner = "JetBrains",
            description = "The Kotlin Programming Language",

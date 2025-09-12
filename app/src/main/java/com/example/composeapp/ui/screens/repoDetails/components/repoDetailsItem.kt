@@ -1,4 +1,4 @@
-package com.example.composeapp.screens.repoDetails.components
+package com.example.composeapp.ui.screens.repoDetails.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.composeapp.theme.ComposeAppTheme
+import com.example.composeapp.ui.theme.ComposeAppTheme
 import com.example.composeapp.R
 
 @Composable

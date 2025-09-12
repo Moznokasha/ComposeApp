@@ -1,8 +1,9 @@
-package com.example.composeapp.screens.repositories.reposData
+package com.example.composeapp.ui.screens.repo_list.model
 
 import androidx.annotation.DrawableRes
 
-data class Repos(
+data class RepoUiModel(
+    val id: Int,
     val title: String,
     val owner: String,
     val description: String,

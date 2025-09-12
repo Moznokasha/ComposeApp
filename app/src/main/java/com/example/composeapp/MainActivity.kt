@@ -1,38 +1,5 @@
 package com.example.composeapp
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import com.example.composeapp.screens.repoDetails.RepoDetailsContent
-
-import com.example.composeapp.theme.ComposeAppTheme
-
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            ComposeAppTheme {
-                RepoDetailsContent()
-//                RepoScreen()
-
-//                    LazyColumn {
-//                        items(dummyData()){(title, description) ->
-//                            MyItem(title = title, description = description)
-//                            HorizontalDivider()
-//                        }
-//                    }
-                }
-            }
-        }
-    }
-
-
-
-
-
 
 //fun circularButtonModifier(color: Color) = Modifier
 //    .background(color, shape = CircleShape)

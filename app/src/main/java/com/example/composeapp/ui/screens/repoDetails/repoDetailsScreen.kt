@@ -1,17 +1,14 @@
-package com.example.composeapp.screens.repoDetails
+package com.example.composeapp.ui.screens.repoDetails
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
@@ -29,14 +26,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices.PIXEL_7
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.composeapp.screens.repoDetails.components.RepoDetailsItem
-import com.example.composeapp.theme.ComposeAppTheme
+import com.example.composeapp.ui.screens.repoDetails.components.RepoDetailsItem
+import com.example.composeapp.ui.theme.ComposeAppTheme
 
 @Composable
-fun RepoDetailsContent(modifier: Modifier = Modifier) {
+fun RepoDetailsContent(innerPadding: PaddingValues
+//                       = modifier: Modifier = Modifier
+                       ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(innerPadding)
             .padding(4.dp)
             .background(Color(0xFFE0E0E0)),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -72,7 +72,7 @@ fun RepoDetailsContent(modifier: Modifier = Modifier) {
                 "Python",
                 R.drawable.blue
             )
-//            Spacer(modifier = Modifier.width(16.dp))
+           Spacer(modifier = Modifier.width(16.dp))
 //          Row(
 //              verticalAlignment = Alignment.CenterVertically
 //          ) {
@@ -88,7 +88,6 @@ fun RepoDetailsContent(modifier: Modifier = Modifier) {
 //                      .padding(start = 4.dp)
 //              )
 //          }
-            Spacer(modifier = Modifier.width(16.dp))
 
             RepoDetailsItem(
                 "347",
@@ -128,7 +127,7 @@ fun RepoDetailsContent(modifier: Modifier = Modifier) {
 @Composable
 fun PreviewRepoDetailsContent () {
     ComposeAppTheme {
-        RepoDetailsContent()
+        RepoDetailsContent(innerPadding = PaddingValues(0.dp))
     }
     
 }
